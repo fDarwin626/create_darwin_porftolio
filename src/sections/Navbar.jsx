@@ -175,7 +175,6 @@ export default function Navbar() {
             right: 0 !important;
             width: calc(100% - 24px) !important;
             margin: 0 12px !important;
-            border-bottom: 1px solid rgba(0,0, 0, 0.15);
             padding-bottom: 12px !important;
           }
 
