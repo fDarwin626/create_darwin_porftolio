@@ -38,36 +38,44 @@ const scrollbarHideStyle = `
       font-size: 14px !important;
     }
 
-    /* Tab buttons stack better */
+    /* Tab buttons stack better WITH TEXT */
+    .pricing-tabs {
+      gap: 8px !important;
+      padding: 0 16px;
+    }
+
     .tab-button {
-      padding: 12px 20px !important;
-      font-size: 13px !important;
+      padding: 10px 16px !important;
+      font-size: 11px !important;
+      min-width: calc(50% - 4px) !important;
+      flex: 0 0 calc(50% - 4px) !important;
     }
 
     .tab-label {
-      display: none;
+      font-size: 11px !important;
     }
 
     .tab-icon {
-      margin-right: 0 !important;
+      margin-right: 6px !important;
     }
 
     /* HORIZONTAL SCROLL FOR PRICING CARDS */
-.pricing-cards-wrapper {
-  display: flex !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  scroll-snap-type: x mandatory !important;
-  -webkit-overflow-scrolling: touch !important;
-  gap: 20px !important;
-  padding: 20px 24px !important;
-  margin: 0 !important;
-}
+    .pricing-cards-wrapper {
+      display: flex !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch !important;
+      gap: 20px !important;
+      padding: 20px 24px !important;
+      margin: 0 !important;
+    }
 
-.pricing-cards-wrapper::after {
-  content: '';
-  flex: 0 0 1px;
-}
+    .pricing-cards-wrapper::after {
+      content: '';
+      flex: 0 0 1px;
+    }
+
     .pricing-card {
       flex: 0 0 85% !important;
       min-width: 280px !important;
@@ -93,10 +101,11 @@ const scrollbarHideStyle = `
       font-size: 16px !important;
     }
 
-.package-features li {
+    .package-features li {
       font-size: 13px !important;
     }
-/* ===== FEATURED PROJECTS SECTION ===== */
+
+    /* ===== FEATURED PROJECTS SECTION ===== */
     .featured-projects-header {
       margin-top: 80px !important;
       margin-bottom: 60px !important;
@@ -142,7 +151,6 @@ const scrollbarHideStyle = `
 
   }
 `
-
 
 
 const Pricing = () => {
@@ -430,39 +438,38 @@ Thank you.`
           </div>
 
           {/* Tabs */}
-          <div ref={tabsRef} style={{ 
-            marginBottom: '60px',
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: '12px'
-          }}
-          className="pricing-tabs">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                style={{
-                  padding: '14px 28px',
-                  background: activeTab === tab.id ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.03)',
-                  border: `1px solid ${activeTab === tab.id ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'}`,
-                  borderRadius: '50px',
-                  color: activeTab === tab.id ? '#ffffff' : 'rgba(255, 255, 255, 0.6)',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  letterSpacing: '0.05em',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  backdropFilter: 'blur(10px)'
-                }}
-                className="hover:bg-white/10 hover:border-white/30"
-              >
-                <span style={{ marginRight: '8px' }}>{tab.icon}</span>
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
+<div ref={tabsRef} style={{ 
+  marginBottom: '60px',
+  display: 'flex',
+  justifyContent: 'center',
+  flexWrap: 'wrap',
+  gap: '12px'
+}}
+className="pricing-tabs">
+  {tabs.map((tab) => (
+    <button
+      key={tab.id}
+      onClick={() => setActiveTab(tab.id)}
+      style={{
+        padding: '14px 28px',
+        background: activeTab === tab.id ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.03)',
+        border: `1px solid ${activeTab === tab.id ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'}`,
+        borderRadius: '50px',
+        color: activeTab === tab.id ? '#ffffff' : 'rgba(255, 255, 255, 0.6)',
+        fontSize: '14px',
+        fontWeight: '500',
+        letterSpacing: '0.05em',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        backdropFilter: 'blur(10px)'
+      }}
+      className="hover:bg-white/10 hover:border-white/30 tab-button"
+    >
+      <span style={{ marginRight: '8px' }} className="tab-icon">{tab.icon}</span>
+      <span className="tab-label">{tab.label}</span>
+    </button>
+  ))}
+</div>
           {/* Category Header */}
           <div style={{ 
             textAlign: 'center',
